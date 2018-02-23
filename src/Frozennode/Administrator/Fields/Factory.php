@@ -383,7 +383,7 @@ class Factory {
 	 */
 	public function getEditFields($loadRelationships = true, $override = false)
 	{
-		if (!sizeof((array) $this->editFields) || $override)
+		if (!($this->editFields && sizeof($this->editFields)) || $override)
 		{
 			$this->editFields = array();
 
@@ -489,7 +489,7 @@ class Factory {
 		$configFilters = $this->config->getOption('filters');
 
 		//make sure that the filters array hasn't been created before and that there are supplied filters in the config
-		if (!sizeof((array) $this->filters) && $configFilters)
+		if (!($this->filters && sizeof($this->filters)) && $configFilters)
 		{
 			//iterate over the filters and create field objects for them
 			foreach ($configFilters as $name => $filter)
@@ -512,7 +512,7 @@ class Factory {
 	 */
 	public function getFiltersArrays()
 	{
-		if (!sizeof((array) $this->filtersArrays))
+		if (!($this->filtersArray && sizeof($this->filtersArrays)))
 		{
 			foreach ($this->getFilters() as $name => $filter)
 			{
@@ -596,7 +596,7 @@ class Factory {
 		//if this is an autocomplete field, check if there is a search term. If not, just return the selected items
 		if ($fieldObject->getOption('autocomplete') && !$term)
 		{
-			if (sizeof((array) $selectedItems))
+			if (($selectedItems && sizeof($selectedItems)))
 			{
 				$this->filterQueryBySelectedItems($query, $selectedItems, $fieldObject, $relatedKeyTable);
 
@@ -711,13 +711,13 @@ class Factory {
 	{
 		$configConstraints = $fieldObject->getOption('constraints');
 
-		if (sizeof((array) $configConstraints))
+		if ($configConstraints && sizeof($configConstraints))
 		{
 			//iterate over the config constraints
 			foreach ($configConstraints as $key => $relationshipName)
 			{
 				//now that we're looping through the constraints, check to see if this one was supplied
-				if (isset($constraints[$key]) && $constraints[$key] && sizeof((array) $constraints[$key]))
+				if (isset($constraints[$key]) && $constraints[$key] && sizeof($constraints[$key]))
 				{
 					//first we get the other model and the relationship field on it
 					$model = $this->config->getDataModel();

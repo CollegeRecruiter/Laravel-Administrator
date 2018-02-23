@@ -207,7 +207,7 @@ class Factory {
 	public function getColumns()
 	{
 		//make sure we only run this once and then return the cached version
-		if (!sizeof((array) $this->columns))
+		if (!($this->columns && sizeof($this->columns)))
 		{
 			foreach ($this->config->getOption('columns') as $name => $options)
 			{
@@ -228,7 +228,7 @@ class Factory {
 	public function getColumnOptions()
 	{
 		//make sure we only run this once and then return the cached version
-		if (!sizeof((array) $this->columnOptions))
+		if (!($this->columnOptions && sizeof($this->columnOptions)))
 		{
 			foreach ($this->getColumns() as $column)
 			{
@@ -249,7 +249,7 @@ class Factory {
 	public function getIncludedColumns(array $fields)
 	{
 		//make sure we only run this once and then return the cached version
-		if (!sizeof((array) $this->includedColumns))
+		if (!($this->includedColumns && sizeof($this->includedColumns)))
 		{
 			$model = $this->config->getDataModel();
 
@@ -292,7 +292,7 @@ class Factory {
 	public function getRelatedColumns()
 	{
 		//make sure we only run this once and then return the cached version
-		if (!sizeof((array) $this->relatedColumns))
+		if (!($this->relatedColumns && sizeof($this->relatedColumns)))
 		{
 			foreach ($this->getColumns() as $column)
 			{
@@ -314,7 +314,7 @@ class Factory {
 	public function getComputedColumns()
 	{
 		//make sure we only run this once and then return the cached version
-		if (!sizeof((array) $this->computedColumns))
+		if (!($this->computedColumns && sizeof($this->computedColumns)))
 		{
 			foreach ($this->getColumns() as $column)
 			{
