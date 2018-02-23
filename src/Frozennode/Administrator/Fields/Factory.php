@@ -89,21 +89,21 @@ class Factory {
 	 *
 	 * @var array
 	 */
-	protected $editFields;
+	protected $editFields = array();
 
 	/**
 	 * The edit field objects as arrays
 	 *
 	 * @var array
 	 */
-	protected $editFieldsArrays;
+	protected $editFieldsArrays = array();
 
 	/**
 	 * The edit field data model
 	 *
 	 * @var array
 	 */
-	protected $dataModel;
+	protected $dataModel = array();
 
 	/**
 	 * Create a new model Config instance
