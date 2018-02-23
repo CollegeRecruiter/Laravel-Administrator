@@ -1,5 +1,30 @@
 ## Changelog
 
+### 4.16.7
+- Bugfix: Taking out model level validation errors if model update fails sine it was ardent only
+
+### 4.16.6
+- Bugfix: Resetting a date/datime to null
+- Bugfix: Added model level validation errors if model update fails
+
+### 4.16.5
+- Bugfix: Another strange old bug where multiple search fields would do a where and instead of a where or
+
+### 4.16.4
+- Bugfix: Strange old bug when using only a setter field on a model
+
+### 4.16.3
+- Bugfix: Adding validateString back into Admin validator to avoid issues with old versions of Laravel
+
+### 4.16.2
+- Bugfix: New Illuminate validateString method did the same thing as the Administrator method of the same name
+
+### 4.16.1
+- Bugfix: Previous update broke temporary upload paths
+
+### 4.16.0
+- It's now possible to use the raw value of a file/image field to help with storing files on remote servers.
+
 ### 4.15.0
 - New uneditable states for color, password, enum, and wysiwyg fields for when the editable option resolves to false
 - New translations (sk)
